@@ -14,6 +14,7 @@ Since we are using one mechanism for client-to-server communication, and another
 * Separation of client-to-server and server-to-client transport methods.
 * Encourages strongly-typed 'Emitters' (equivalent to SignalR Hubs)
 * Designed to be injectable into common IoC containers.
+* Minimal setup and dependencies
 
 ## Get it on NuGet!
 
@@ -56,7 +57,7 @@ We can start SignalR just as we normally would.
 #### Basic Usage
 The example below shows basic standalone usage of Emmit.
 
-    Emmit.IEmitterFactory factory = new Emmit.EmitterFactory();
+    IEmitterFactory factory = new EmitterFactory();
     IStockEmitter stockEmitter = factory.Create<StockEmitter>();
     stockEmitter.OnOpenStock("Google");
 
