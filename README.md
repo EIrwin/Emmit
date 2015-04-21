@@ -17,6 +17,7 @@ Since we are using one mechanism for client-to-server communication, and another
 * Minimal setup and dependencies
 
 ## Get it on NuGet!
+You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.org/packages/Emmit/1.0.0) or installing directly via your NuGet package manager.
 
     Install-Package Emmit
 
