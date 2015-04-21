@@ -9,11 +9,19 @@ HTTP seems to be doing alright handling communication from the client to the ser
 
 Since we are using one mechanism for client-to-server communication, and another for server-to-client, we can clearly separate these responsibilities in our code.
 
+## What benefits does Emmit provide over just using SignalR?
+
+* Separation of client-to-server and server-to-client transport methods.
+* Encourages strongly-types 'Emitters' (equivalent to SignalR Hubs)
+* Designed to be injectable into common IoC containers.
+
 ## Get it on NuGet!
 
     Install-Package Emmit
 
 ## Sample Usage
+
+    
 
 
 
