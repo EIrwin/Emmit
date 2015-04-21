@@ -10,9 +10,4 @@ namespace Emmit
     {
         
     }
-
-    public class Emitter
-    {
-        
-    }
 }
