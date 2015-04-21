@@ -61,7 +61,24 @@ The example below shows basic standalone usage of Emmit.
     stockEmitter.OnOpenStock("Google");
 
 ### Using Emmit with Self-Hosted NancyFX
+The example below shows how Emmit can be combined with NancyFX TinyIocContainer to inject IEmitter's into NancyModules.
 
+    public class Bootstrapper : DefaultNancyBootstrapper
+    {
+        protected override void ApplicationStartup(TinyIoCContainer container, global::Nancy.Bootstrapper.IPipelines pipelines)
+        {
+            //Configure application startup
+            ConfigureIocContainer(container);
+            base.ApplicationStartup(container, pipelines);
+        }
+
+        private void ConfigureIocContainer(TinyIoCContainer container)
+        {
+            //Tell TinyIoC how we want to inject IStockEmitter
+            Emmit.IEmitterFactory factory = new Emmit.EmitterFactory();
+            container.Register((cont, overloads) => (IStockEmitter) factory.Create<StockEmitter>());
+        }
+    }
 
     
 
