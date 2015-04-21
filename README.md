@@ -54,9 +54,14 @@ We can start SignalR just as we normally would.
     }
 
 #### Basic Usage
+The example below shows basic standalone usage of Emmit.
+
     Emmit.IEmitterFactory factory = new Emmit.EmitterFactory();
     IStockEmitter stockEmitter = factory.Create<StockEmitter>();
     stockEmitter.OnOpenStock("Google");
+
+### Using Emmit with Self-Hosted NancyFX
+
 
     
 
