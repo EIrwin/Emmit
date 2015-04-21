@@ -116,6 +116,22 @@ The example below shows how Emmit can be combined with NancyFX TinyIocContainer 
             container.Register((cont, overloads) => (IStockEmitter) factory.Create<StockEmitter>());
         }
     }
+    
+A sample Nancy module for this example is the following. The example below shows the `IStockEmitter` being invoked from the module. It is important to note that IEmitter implementations can be invoked anywhere they are injected, or created from `IEmitterFactory`. For this example, we just want to show how it can be used after being injected into a NancyModule.
+
+    public class StockModule:NancyModule
+    {
+        public StockModule(IStockEmitter stockEmitter,IStockService stockService)
+        {
+            Post["/Open",true] = async (context, cancel) =>
+                {
+                    string symbol = context.Symbol;
+                    bool stockOpened = stockService.OpenStock(symbol)
+                    stockEmitter.OnOpenStock(symbol;
+                    return Task.FromResult(Response.AsJson(true));
+                };
+        }
+    }
 
     
 
