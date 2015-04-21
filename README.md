@@ -17,7 +17,7 @@ Since we are using one mechanism for client-to-server communication, and another
 * Minimal setup and dependencies
 
 ## Can I still use SignalR?
-Absolutely! As we mentioned, Emmit is just built as an abstraction on top of SignalR in order to facilitate certain operations. All `Emitter` objects extend SignalR `Hub` and therefore inherit base SignalR functionality.
+Absolutely! As we mentioned, Emmit is just built as an abstraction on top of SignalR in order to facilitate certain operations. All `Emitter` objects extend SignalR `Hub` and therefore inherits base SignalR functionality.
 
 ## How does client consume data from Emmit emitters?
 There are several options for implementing your client to use with Emmit?
