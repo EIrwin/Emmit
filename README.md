@@ -12,7 +12,7 @@ Since we are using one mechanism for client-to-server communication, and another
 ## What benefits does Emmit provide over just using SignalR?
 
 * Separation of client-to-server and server-to-client transport methods.
-* Encourages strongly-types 'Emitters' (equivalent to SignalR Hubs)
+* Encourages strongly-typed 'Emitters' (equivalent to SignalR Hubs)
 * Designed to be injectable into common IoC containers.
 
 ## Get it on NuGet!
