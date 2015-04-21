@@ -20,6 +20,43 @@ Since we are using one mechanism for client-to-server communication, and another
     Install-Package Emmit
 
 ## Sample Usage
+Since Emmit is built on top of SignalR, you dont have to change any of the initialization or middleware used to get Emmit up and running. Emmit provides some 'syntactic sugar' to run on top of SignalR when pushing data to the client from the server.
+
+#### SignalR Setup and Configuration
+
+It is good practice to centralize our configuration into a class. In this example, we will create a `Startup` class that will be passed as a generic type definition to `WebApp.Start<Startup>(string url)`
+
+    public class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            app.UseCors(CorsOptions.AllowAll);
+            app.MapSignalR(new HubConfiguration()
+                {
+                    EnableJavaScriptProxies = true
+                });
+        }
+    }
+    
+We can start SignalR just as we normally would.
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string url = "http://localhost:8181";
+            using (WebApp.Start<Startup>(url))
+            {
+                Console.WriteLine("Server running on {0}", url);
+                Console.ReadLine();
+            }
+        }
+    }
+
+#### Basic Usage
+    Emmit.IEmitterFactory factory = new Emmit.EmitterFactory();
+    IStockEmitter stockEmitter = factory.Create<StockEmitter>();
+    stockEmitter.OnOpenStock("Google");
 
     
 
