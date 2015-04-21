@@ -22,7 +22,7 @@ Absolutely! As we mentioned, Emmit is just built as an abstraction on top of Sig
 ## How does client consume data from Emmit emitters?
 There are several options for implementing your client to use with Emmit?
 
-* Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
+1. Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
         var proxy = null;
         var connection = $.hubConnection();
         var connection.url = "http://localhost:8181/signalr";
@@ -44,7 +44,7 @@ There are several options for implementing your client to use with Emmit?
                   //couldn't connect
                 });    
                 
-* Use the `Emmit.Client` bower package. This is still in development.
+2. Use the `Emmit.Client` bower package. This is still in development.
 
 ## Get it on NuGet!
 You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.org/packages/Emmit/1.0.0) or installing directly via your NuGet package manager.
