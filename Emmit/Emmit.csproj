@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Emitter.cs" />
     <Compile Include="IEmitter.cs" />
     <Compile Include="EmitterFactory.cs" />
     <Compile Include="IEmitterFactory.cs" />
