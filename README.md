@@ -23,6 +23,7 @@ Absolutely! As we mentioned, Emmit is just built as an abstraction on top of Sig
 There are several options for implementing your client to use with Emmit?
 
 1. Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
+2. 
         var proxy = null;
         var connection = $.hubConnection();
         var connection.url = "http://localhost:8181/signalr";
