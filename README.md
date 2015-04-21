@@ -22,31 +22,29 @@ Absolutely! As we mentioned, Emmit is just built as an abstraction on top of Sig
 ## How does client consume data from Emmit emitters?
 There are several options for implementing your client to use with Emmit?
 
-1. Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
-    
-    var proxy = null;
-    var connection = $.hubConnection();
-    var connection.url = "http://localhost:8181/signalr";
-    proxy = connection.createHubProxy("stockEmitter");
+* Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
+        var proxy = null;
+        var connection = $.hubConnection();
+        var connection.url = "http://localhost:8181/signalr";
+        proxy = connection.createHubProxy("stockEmitter");
 
-    proxy.on('onOpenStock',function(message){
-       //do something with the data from the server
-    });
-    
-    proxy.on('onCloseStock',function(message){
-       //do something with the data from the server
-    });
-    
-     connection.start()
-            .done(function () {
-              //connected successfully
-            })
-            .fail(function () {
-              //couldn't connect
-            });
+        proxy.on('onOpenStock',function(message){
+           //do something with the data from the server
+        });
         
-    connection.start()
-2. Use the `Emmit.Client` bower package. This is still in development.
+        proxy.on('onCloseStock',function(message){
+           //do something with the data from the server
+        });
+        
+         connection.start()
+                .done(function () {
+                  //connected successfully
+                })
+                .fail(function () {
+                  //couldn't connect
+                });    
+                
+* Use the `Emmit.Client` bower package. This is still in development.
 
 ## Get it on NuGet!
 You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.org/packages/Emmit/1.0.0) or installing directly via your NuGet package manager.
