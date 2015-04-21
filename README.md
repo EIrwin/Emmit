@@ -98,7 +98,7 @@ The `StockEmitter` class is simple and looks like the following:
     }
 
 ### Using Emmit with Self-Hosted NancyFX
-The example below shows how Emmit can be combined with NancyFX TinyIocContainer to inject IEmitter's into NancyModules.
+The example below shows how Emmit can be combined with NancyFX TinyIocContainer to inject `IEmitter` objects into NancyModules.
 
     public class Bootstrapper : DefaultNancyBootstrapper
     {
@@ -117,7 +117,7 @@ The example below shows how Emmit can be combined with NancyFX TinyIocContainer 
         }
     }
     
-A sample Nancy module for this example is the following. The example below shows the `IStockEmitter` being invoked from the module. It is important to note that IEmitter implementations can be invoked anywhere they are injected, or created from `IEmitterFactory`. For this example, we just want to show how it can be used after being injected into a NancyModule.
+A sample `NancyModule` for this example is the following. The example below shows the `IStockEmitter` being invoked from the module. It is important to note that `IEmitter` implementations can be invoked anywhere they are injected, or created from `IEmitterFactory`. For this example, we just want to show how it can be used after being injected into a `NancyModule`.
 
     public class StockModule:NancyModule
     {
