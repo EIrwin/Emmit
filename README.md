@@ -61,6 +61,41 @@ The example below shows basic standalone usage of Emmit.
     IEmitterFactory factory = new EmitterFactory();
     IStockEmitter stockEmitter = factory.Create<StockEmitter>();
     stockEmitter.OnOpenStock("Google");
+    
+The `StockEmitter` class is simple and looks like the following:
+
+    public class StockEmitter:Emitter,IStockEmitter
+    {
+        public StockEmitter() : base(null)
+        {
+            /* Default constructor needed by SignalR*/
+        }
+        public StockEmitter(IHubContext context) : base(context)
+        {
+            /*Overloaded constructor needed for Emmit*/
+        }
+
+        public void OnOpenStock(string symbol)
+        {
+            /*Invoke onOpenStock on client(s)*/
+            if (EmitterContext != null)
+                EmitterContext.Clients.All.onOpenStock(symbol);
+        }
+
+        public void OnCloseStock(string symbol)
+        {
+            /*Invoke onCloseStock on client(s)*/
+            if (EmitterContext != null)
+                EmitterContext.Clients.All.onCloseStock(symbol);
+        }
+
+        public void OnUpdateStock(string symbol)
+        {
+            /*Invoke onUpdateStock on client(s)*/
+            if (EmitterContext != null)
+                EmitterContext.Clients.All.onUpdateStock(symbol);
+        }
+    }
 
 ### Using Emmit with Self-Hosted NancyFX
 The example below shows how Emmit can be combined with NancyFX TinyIocContainer to inject IEmitter's into NancyModules.
