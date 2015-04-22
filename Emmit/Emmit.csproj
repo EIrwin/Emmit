@@ -67,6 +67,8 @@
     <Compile Include="IEmitter.cs" />
     <Compile Include="EmitterFactory.cs" />
     <Compile Include="IEmitterFactory.cs" />
+    <Compile Include="IEmitterContext.cs" />
+    <Compile Include="EmitterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
