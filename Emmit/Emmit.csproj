@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Emitter.cs" />
+    <Compile Include="EmitterContext.cs" />
     <Compile Include="IEmitter.cs" />
     <Compile Include="EmitterFactory.cs" />
+    <Compile Include="IEmitterActivator.cs" />
     <Compile Include="IEmitterFactory.cs" />
     <Compile Include="IEmitterContext.cs" />
     <Compile Include="EmitterModel.cs" />

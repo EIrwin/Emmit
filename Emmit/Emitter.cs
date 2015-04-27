@@ -8,7 +8,6 @@ namespace Emmit
     {
         public IEmitterContext EmitterContext { get; set; }
         protected IDictionary<string, object> Model { get; set; }
-        public Emitter(){/*Do not remove*/}
         public Emitter(IEmitterContext emitterContext)
         {
             EmitterContext = emitterContext;
