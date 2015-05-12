@@ -28,7 +28,7 @@ Absolutely! As we mentioned, Emmit is just built as an abstraction on top of Sig
 There are several options for implementing your client to use with Emmit?
 
 1. Use SignalR Hub client side code just as you would with a normal SignalR server implementation.
-2. 
+```javascript
         var proxy = null;
         var connection = $.hubConnection();
         var connection.url = "http://localhost:8181/signalr";
@@ -49,8 +49,34 @@ There are several options for implementing your client to use with Emmit?
                 .fail(function () {
                   //couldn't connect
                 });    
-                
-2. Use the `Emmit.Client` bower package. This is still in development.
+```                
+2. Use the [angular-emmit-client](https://github.com/EIrwin/angular-emmit-client) bower package to create a proxy to the server.
+```javascript
+   myApp.controller('myController',['$scope','Emmit','$log'],function($scope,Emmit,$log){
+      Emmit.createProxy({
+            emitter:'myEmitter',
+            path:'http://localhost:8181/emmit',
+            listeners:{
+                'onSendNotification':function(notification){
+                    //do something with notification received from server
+                    $scope.$emit('onSendNotification',notification);
+                }
+            },
+            onError:function(){
+                $log.error('onError:');
+            },
+            onDisconnected:function(){
+                $log.info('onDisconnected:')
+            },
+            queryParams:{
+                userId:'12345'  //optional
+            }
+        }).then(function(proxy){
+            $log.info('proxy created');
+            //Do something here with the proxy if you need
+        });
+   }
+``` 
 
 ## Sample Usage
 Since Emmit is built on top of SignalR, you dont have to change any of the initialization or middleware used to get Emmit up and running. Emmit provides some 'syntactic sugar' to run on top of SignalR when pushing data to the client from the server.
