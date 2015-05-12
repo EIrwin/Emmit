@@ -1,3 +1,8 @@
+## Get it on NuGet!
+You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.org/packages/Emmit/1.0.0) or installing directly via your NuGet package manager.
+
+    Install-Package Emmit
+
 ## What is Emmit?
 Emmit is just a simple wrapper for [SignalR](https://github.com/SignalR/SignalR) Hub that 'encourages' pushing data from server to listening clients (and only that). In fact, we have hidden the ability for the client to talk to the server (through the exposed API anyway).
 
@@ -46,11 +51,6 @@ There are several options for implementing your client to use with Emmit?
                 });    
                 
 2. Use the `Emmit.Client` bower package. This is still in development.
-
-## Get it on NuGet!
-You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.org/packages/Emmit/1.0.0) or installing directly via your NuGet package manager.
-
-    Install-Package Emmit
 
 ## Sample Usage
 Since Emmit is built on top of SignalR, you dont have to change any of the initialization or middleware used to get Emmit up and running. Emmit provides some 'syntactic sugar' to run on top of SignalR when pushing data to the client from the server.
