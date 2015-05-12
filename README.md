@@ -182,7 +182,7 @@ A sample `NancyModule` for this example is the following. The example below show
     }
 
 #### Using Emmit with your Ioc Container
-We can leverage the `SignalR GlobalHost.DependencyResolver` to use Emmit with our service containers just as they do in `SignalR`. The following sample shows how to implement a IEmitterActivator to control the creation of your `Emitter` objects.
+We can leverage the `SignalR GlobalHost.DependencyResolver` to use `Emmit` with our service containers just as they do in `SignalR`. The following sample shows how to implement a `IEmitterActivator` to control the creation of your `Emitter` objects.
 
 First, we want to implement our `IEmitterActivator' implementation. For this sample, we are just showing a basic Ioc Service container implementation. Because you have full control over registering and retrieving dependencies from your container, you shouldn't have any problems using whatever container or framework you would like.
 
