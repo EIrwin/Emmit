@@ -85,12 +85,12 @@ Since Emmit is built on top of SignalR, you dont have to change any of the initi
 
 It is good practice to centralize our configuration into a class. In this example, we will create a `Startup` class that will be passed as a generic type definition to `WebApp.Start<Startup>(string url)`
 
-    public class Startup
+    public class EmnmitStartup
     {
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
-            app.MapSignalR(new HubConfiguration()
+            app.MapSignalR("/emmit",new HubConfiguration()
                 {
                     EnableJavaScriptProxies = true
                 });
