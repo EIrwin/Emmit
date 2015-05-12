@@ -6,6 +6,16 @@ You can install Emmit via nuget by visiting the [Emmit NuGet](https://www.nuget.
 ## What is Emmit?
 Emmit is just a simple wrapper for [SignalR](https://github.com/SignalR/SignalR) Hub that 'encourages' pushing data from server to listening clients (and only that). In fact, we have hidden the ability for the client to talk to the server (through the exposed API anyway).
 
+## What does this mean (simply)?
+
+Simply, this means that we can create or resolve a strongly typed `Emitter` virtually anywhere in our codebase and push data from the server to the client.
+
+    IEmitterFactory factory = new EmitterFactory();
+    IStockEmitter stockEmitter = factory.Create<StockEmitter>();
+    stockEmitter.OnOpenStock("Google");
+    
+A client that understands how and where to listen for this (discussed below) can add a 'listener' for `OnOpenStock` and will receive the data from the server.
+
 ## What can Emmit be used for?
 Emmit is intended to be used for the sole purpose of pushing data from the server to the client (not just web browsers).
 
