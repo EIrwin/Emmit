@@ -31,7 +31,7 @@ There are several options for implementing your client to use with Emmit?
 ```javascript
         var proxy = null;
         var connection = $.hubConnection();
-        var connection.url = "http://localhost:8181/signalr";
+        var connection.url = "http://localhost:8181/emmit";
         proxy = connection.createHubProxy("stockEmitter");
 
         proxy.on('onOpenStock',function(message){
