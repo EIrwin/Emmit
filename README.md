@@ -181,7 +181,70 @@ A sample `NancyModule` for this example is the following. The example below show
         }
     }
 
-#### Advanced Usage
+#### Using Emmit with your Ioc Container
+We can leverage the `SignalR GlobalHost.DependencyResolver` to use Emmit with our service containers just as they do in `SignalR`. The following sample shows how to implement a IEmitterActivator to control the creation of your `Emitter` objects.
+
+First, we want to implement our `IEmitterActivator' implementation. For this sample, we are just showing a basic Ioc Service container implementation. Because you have full control over registering and retrieving dependencies from your container, you shouldn't have any problems using whatever container or framework you would like.
+
+    public class StockEmitterActivator:IEmitterActivator
+    {
+        private IServiceContainer _container;
+        public StockEmitterActivator(IServiceContainer container)
+        {
+            _container = container;
+        }
+        
+        public IHub Create(HubDescriptor descriptor)
+        {
+            return _container.Service(descriptor.HubType) as IHub;
+        }
+    }
+
+The next step is we want to register the `StockEmitterActivator` with the `GlobalHost.DependencyResolver` in our `EmmitStartup` class. Once this is down, our `EmmitStartup` should look like the following:
+
+    public class EmmitStartup
+    {
+        private IServiceContainer _container;
+        public EmmitStartup(IServiceContainer container)
+        {
+            _container = container;
+        }
+        public void Configuration(IAppBuilder app)
+        {
+            GlobalHost.DependencyResolver.Register(typeof (IHubActivator),() => new     NotificationsEmitterActivator(_container));
+
+            app.MapSignalR("/emmit",new HubConfiguration()
+                {
+                    EnableJavaScriptProxies = true
+                });
+        }
+    }
+    
+The last step is we need to be able to inject our service container into our `EmmitStartup` class. We can accomplish this just be lightly modifying the code for initializing `Emmit`. An example of this is shown below.
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var container = new ServiceContainer();
+            
+            string url = "http://localhost:8181";
+            WebApp.Start(url,app => 
+            {
+                var startup = new EmmitStartup(container);
+                startup.configuration(app)
+                Console.WriteLine("Server running on {0}", url);
+                Console.ReadLine();
+            });
+        }
+    }
+
+
+
+
+
+
+
 
 
     
