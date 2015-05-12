@@ -52,27 +52,25 @@ There are several options for implementing your client to use with Emmit?
 ```                
 2. Use the [angular-emmit-client](https://github.com/EIrwin/angular-emmit-client) bower package to create a proxy to the server.
 ```javascript
-        myApp.controller('myController',['$scope','Emmit','$log'],function($scope,Emmit,$log){
+        myApp.controller('myController',['Emmit'],function(Emmit){
           Emmit.createProxy({
                 emitter:'myEmitter',
                 path:'http://localhost:8181/emmit',
                 listeners:{
                     'onSendNotification':function(notification){
-                        //do something with notification received from server
-                        $scope.$emit('onSendNotification',notification);
+                        //do something with 'notification' received from server
                     }
                 },
                 onError:function(){
-                    $log.error('onError:');
+                    //an error occured
                 },
                 onDisconnected:function(){
-                    $log.info('onDisconnected:')
+                    //proxy was disconnected
                 },
                 queryParams:{
                     userId:'12345'  //optional
                 }
-            }).then(function(proxy){
-                $log.info('proxy created');
+            }).then(function(newProxy){
                 //Do something here with the proxy if you need
             });
         }
@@ -182,6 +180,9 @@ A sample `NancyModule` for this example is the following. The example below show
                 };
         }
     }
+
+#### Advanced Usage
+
 
     
 
