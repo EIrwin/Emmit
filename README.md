@@ -249,7 +249,10 @@ The last step is we need to be able to inject our service container into our `Em
         }
     }
 
+#### View Samples
+For full examples of using [Emmit](https://github.com/EIrwin/Emmit) and [angular-emmit-client](https://github.com/EIrwin/angular-emmit-client), check out the [Emmit Samples](https://github.com/EIrwin/Emmit.Samples)
 
+We are working on adding more examples demonstrating intermediate and advanced usage of `Emmit`
 
 
 
